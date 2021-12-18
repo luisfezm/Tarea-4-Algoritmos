@@ -2,10 +2,9 @@
 public class NodoLista {
 	int key;
 	String item;
-	NodoLista nodoSiguiente;
-	NodoLista nodoAnterior;
+	NodoLista nodoSiguiente, nodoAnterior;
 	
-	NodoLista(int key, String item){
+	public NodoLista(int key, String item){
 		this.key=key;
 		this.item=item;
 		nodoSiguiente=null;
