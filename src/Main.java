@@ -4,7 +4,7 @@ public class Main {
 
 	public static Scanner sc = new Scanner(System.in);
 	public static int tipoDiccionario;
-	public static ListaOrdenada lista = new ListaOrdenada();
+	public static ListaOrdenada lista;
 
 	public static void interactiva() {
 		int operacion;
@@ -57,10 +57,10 @@ public class Main {
 					System.out.print("Ingrese rango maximo de busqueda (begin): ");
 					int end = sc.nextInt();
 					String salida = lista.findRange(begin, end);
-					if(salida=="") {
+					if (salida == "") {
 						System.out.println("Ningun elemento dentro del rango");
-					}else {
-						System.out.println("Elementos encontrados\n+"+salida);
+					} else {
+						System.out.println("Elementos encontrados\n+" + salida);
 					}
 				}
 			} else if (operacion == 5) {
@@ -69,11 +69,12 @@ public class Main {
 				} else if (tipoDiccionario == 2) {
 					System.out.print("Ingrese llave a buscar altura asociada: ");
 					int key = sc.nextInt();
-					int salida=lista.height(key);
-					if(salida==-1) {
-						System.out.println("Llave no esta en lista, por tanto, no se puede calcular su altura asociada");
-					}else {
-						System.out.println("Altura asociada: "+salida);
+					int salida = lista.height(key);
+					if (salida == -1) {
+						System.out
+								.println("Llave no esta en lista, por tanto, no se puede calcular su altura asociada");
+					} else {
+						System.out.println("Altura asociada: " + salida);
 					}
 				}
 			} else if (operacion == 6) {
@@ -89,28 +90,43 @@ public class Main {
 	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		System.out.print("---\nIngrese el tipo de diccionario sobre el cual operará:\n" + "	1 sobre arborAVL\n "
-				+ "	2 sobre lista Ordenada\n" + "	0 para salir\n" + ":");
-		tipoDiccionario = sc.nextInt();
+		do {
+			System.out.print("---\nIngrese el tipo de diccionario sobre el cual operará:\n" + "	1 sobre arborAVL\n "
+					+ "	2 sobre lista Ordenada\n" + "	0 para salir\n" + ":");
+			tipoDiccionario = sc.nextInt();
+		} while (tipoDiccionario != 0 && tipoDiccionario != 1 && tipoDiccionario != 2);
+		
+		
+		if (tipoDiccionario != 0) {
+			int version;
+			if(tipoDiccionario==1) {
+				/* mati añadir constructor de tu objeto estatico arbol*/
+			}else if(tipoDiccionario==2) {
+				 lista= new ListaOrdenada();
+			}
+			
+			do {
+				System.out.print("\n---\nIngrese la version a realizar: \n" + "	1 para probar version interactiva \n"
+						+ "	2 para probar version experimental \n" + "	0 para salir \n" + ":");
+				version = sc.nextInt();
 
-		System.out.print("\n---\nIngrese la version a realizar: \n" + "	1 para probar version interactiva \n"
-				+ "	2 para probar version experimental \n" + "	0 para salir \n" + ":");
-		int version = sc.nextInt();
-
-		switch (version) {
-		case 0:
-			System.out.println(">Decisiste salir");
-			break;
-		case 1:
-			interactiva();
-			break;
-		case 2:
-			/* experimental */
-			break;
-		default:
-			System.out.println(">ERROR: operacion no valida");
-			break;
+				switch (version) {
+				case 0:
+					System.out.println(">Decisiste salir");
+					break;
+				case 1:
+					interactiva();
+					break;
+				case 2:
+					/* experimental */
+					break;
+				default:
+					System.out.println(">ERROR: operacion no valida");
+					break;
+				}
+			} while (version != 0);
+		}else {
+			System.out.println(">Decidiste salir");
 		}
 	}
 
