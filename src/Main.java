@@ -5,7 +5,8 @@ public class Main {
 	public static Scanner sc = new Scanner(System.in);
 	public static int tipoDiccionario;
 	public static ListaOrdenada lista;
-
+	public static arboles_avl arbol;
+	
 	public static void interactiva() {
 		int operacion;
 
@@ -20,6 +21,12 @@ public class Main {
 			} else if (operacion == 1) {
 				if (tipoDiccionario == 1) {
 					/* llenar mati */
+					System.out.print("Ingrese llave nueva: ");
+					int key = sc.nextInt();
+					System.out.print("\nIngrese valor nuevo: ");
+					String item = sc.next();
+					arbol.insert(key, item);
+					
 				} else if (tipoDiccionario == 2) {
 					System.out.print("Ingrese llave nueva: ");
 					int key = sc.nextInt();
@@ -30,6 +37,10 @@ public class Main {
 			} else if (operacion == 2) {
 				if (tipoDiccionario == 1) {
 					/* llenar mati */
+					System.out.print("Ingrese llave a remover: ");
+					int key = sc.nextInt();
+					arbol.remove(key);
+					
 				} else if (tipoDiccionario == 2) {
 					System.out.print("Ingrese llave a remover: ");
 					int key = sc.nextInt();
@@ -37,7 +48,15 @@ public class Main {
 				}
 			} else if (operacion == 3) {
 				if (tipoDiccionario == 1) {
-					/* llenar mati */
+					System.out.print("Ingrese llave a buscar: ");
+					int key = sc.nextInt();
+					String salida arbol.find(key)
+					if (salida == "") {
+						System.out.println("Llave no encontrada en lista");
+					} else {
+						System.out.println("Encontrada: " + salida);
+					}
+					
 				} else if (tipoDiccionario == 2) {
 					System.out.print("Ingrese llave a buscar: ");
 					int key = sc.nextInt();
@@ -51,6 +70,16 @@ public class Main {
 			} else if (operacion == 4) {
 				if (tipoDiccionario == 1) {
 					/* llenar mati */
+					System.out.print("Ingrese rango minimo de busqueda (begin): ");
+					int begin = sc.nextInt();
+					System.out.print("Ingrese rango maximo de busqueda (begin): ");
+					int end = sc.nextInt();
+					String salida = arbol.findRange(begin, end);
+					if (salida == "") {
+						System.out.println("Ningun elemento dentro del rango");
+					} else {
+						System.out.println("Elementos encontrados\n+" + salida);
+					}
 				} else if (tipoDiccionario == 2) {
 					System.out.print("Ingrese rango minimo de busqueda (begin): ");
 					int begin = sc.nextInt();
@@ -65,7 +94,17 @@ public class Main {
 				}
 			} else if (operacion == 5) {
 				if (tipoDiccionario == 1) {
-					/* llenar mati */
+					/* llenar mati  pd esta esta un poco bug dentro de los grafos pero funcionan bien*/
+					System.out.print("Ingrese llave a buscar altura asociada: ");
+					int key = sc.nextInt();
+					int salida = arbol.height(key);
+					if (salida == -1) {
+						System.out
+								.println("Llave no esta en lista, por tanto, no se puede calcular su altura asociada");
+					} else {
+						System.out.println("Altura asociada: " + salida);
+					}
+					
 				} else if (tipoDiccionario == 2) {
 					System.out.print("Ingrese llave a buscar altura asociada: ");
 					int key = sc.nextInt();
@@ -79,7 +118,7 @@ public class Main {
 				}
 			} else if (operacion == 6) {
 				if (tipoDiccionario == 1) {
-					/* llenar mati */
+					System.out.println("\n" + arbol.toString(arbol.Nodo_inicial));
 				} else if (tipoDiccionario == 2) {
 					System.out.println("\n" + lista.toString());
 				}
@@ -101,6 +140,8 @@ public class Main {
 			int version;
 			if(tipoDiccionario==1) {
 				/* mati añadir constructor de tu objeto estatico arbol*/
+				arbol = new arboles_avl;
+				
 			}else if(tipoDiccionario==2) {
 				 lista= new ListaOrdenada();
 			}
